@@ -2,7 +2,9 @@
 
 ## master (unreleased)
 
-Nothing to see here yet.
+### Australia refactor/fixes
+
+* Australian Capital Territory fixes: added the Easter Sunday to holidays.
 
 ## v15.3.0 (2021-05-07)
 
