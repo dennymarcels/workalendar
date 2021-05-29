@@ -74,6 +74,10 @@ class ChristianMixin:
     # Fat tuesday forced to `None` to make sure this value is always set
     # We've seen that there was a wide variety of labels.
     fat_tuesday_label = None
+    include_fat_monday = False
+    # Fat monday forced to `None` to make sure this value is always set
+    # We've seen that there was a wide variety of labels.
+    fat_monday_label = None
     include_ash_wednesday = False
     ash_wednesday_label = "Ash Wednesday"
     include_palm_sunday = False
@@ -107,6 +111,14 @@ class ChristianMixin:
                 "`fat_tuesday_label` value")
         sunday = self.get_easter_sunday(year)
         return sunday - timedelta(days=47)
+    
+    def get_fat_monday(self, year):
+        if not self.fat_monday_label:
+            raise CalendarError(
+                "Improperly configured: please provide a "
+                "`fat_monday_label` value")
+        fat_tuesday = self.fat_tuesday(year)
+        return fat_tuesday - timedelta(days=1)
 
     def get_ash_wednesday(self, year):
         sunday = self.get_easter_sunday(year)
